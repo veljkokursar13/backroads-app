@@ -11,19 +11,20 @@ import Tours from './components/Tours';
 function App() {
   useEffect(() => {
     const handleLink = (e) => {
-      const href = e.currentTarget.getAttribute('href');
-      if (href && href.startsWith('#')) {
+      const anchor = e.target.closest('a[href^="#"]');
+      if (!anchor) return;
+      const href = anchor.getAttribute('href');
+      const section = document.querySelector(href);
+      if (section) {
         e.preventDefault();
-        const section = document.querySelector(href);
-        if (section) {
-          section.scrollIntoView({ behavior: 'smooth' });
-        }
+        section.scrollIntoView({ behavior: 'smooth' });
       }
     };
-    const links = document.querySelectorAll('a[href^="#"]');
-    links.forEach((link) => link.addEventListener('click', handleLink));
-    return () =>
-      links.forEach((link) => link.removeEventListener('click', handleLink));
+
+    document.addEventListener('click', handleLink);
+    return () => {
+      document.removeEventListener('click', handleLink);
+    };
   }, []);
 
   return (

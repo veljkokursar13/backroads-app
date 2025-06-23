@@ -7,7 +7,7 @@ export const pageLinks = [
     { id: 2, href: "#about", text: "about" },
     { id: 3, href: "#services", text: "services" },
     { id: 4, href: "#tours", text: "tours" },
-]
+];
 
 export const socialLinks = [
     { id: 1, href: "https://www.facebook.com", icon: "fab fa-facebook" },
@@ -68,4 +68,4 @@ export const tours = [
         duration: "8 days",
         price: "$5000",
     },
-]
+];
